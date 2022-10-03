@@ -8,6 +8,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "lint": "ng lint",
+        "lint:date-time-picker": "ng lint date-time-picker",
         "prepare": "husky install"
     },
     "private": true,
