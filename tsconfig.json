@@ -4,7 +4,7 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "date-time-picker": ["dist/date-time-picker"]
+            "ng-date-time-picker": ["dist/date-time-picker"]
         },
         "outDir": "./dist/out-tsc",
         "forceConsistentCasingInFileNames": true,
