@@ -5,7 +5,10 @@
         {
             "files": ["*.ts"],
             "parserOptions": {
-                "project": ["projects/date-time-picker/tsconfig.lib.json", "projects/date-time-picker/tsconfig.spec.json"],
+                "project": [
+                    "projects/date-time-picker/tsconfig.lib.json",
+                    "projects/date-time-picker/tsconfig.spec.json"
+                ],
                 "createDefaultProgram": true
             },
             "rules": {
