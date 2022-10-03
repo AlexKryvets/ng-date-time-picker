@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
-import {DateTimePickerComponent} from './date-time-picker.component';
 
 @NgModule({
-    declarations: [DateTimePickerComponent],
+    declarations: [],
     imports: [],
-    exports: [DateTimePickerComponent],
+    exports: [],
 })
 export class DateTimePickerModule {}
