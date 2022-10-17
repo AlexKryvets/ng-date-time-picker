@@ -5,7 +5,8 @@
   [attr.aria-labelledby]="_dialogLabelId ?? undefined"
   class="mat-datepicker-content-container"
   [class.mat-datepicker-content-container-with-custom-header]="datepicker.calendarHeaderComponent"
-  [class.mat-datepicker-content-container-with-actions]="_actionsPortal">
+  [class.mat-datepicker-content-container-with-actions]="_actionsPortal"
+>
   <mat-calendar
     [id]="datepicker.id"
     [ngClass]="datepicker.panelClass"
@@ -23,7 +24,14 @@
     (yearSelected)="datepicker._selectYear($event)"
     (monthSelected)="datepicker._selectMonth($event)"
     (viewChanged)="datepicker._viewChanged($event)"
-    (_userSelection)="_handleUserSelection($event)"></mat-calendar>
+    (_userSelection)="_handleUserSelection($event)"
+  ></mat-calendar>
+
+  <ng-container *ngIf="isViewMonth">
+    <div *ngIf="!datepicker._hideTime" class="time-container" [class.disable-seconds]="!datepicker._showSeconds">
+      <ng-timepicker [showSpinners]="datepicker._showSpinners" [ngModel]="_getSelected()"></ng-timepicker>
+    </div>
+  </ng-container>
 
   <ng-template [cdkPortalOutlet]="_actionsPortal"></ng-template>
 
@@ -36,5 +44,8 @@
     [class.cdk-visually-hidden]="!_closeButtonFocused"
     (focus)="_closeButtonFocused = true"
     (blur)="_closeButtonFocused = false"
-    (click)="datepicker.close()">{{ _closeButtonText }}</button>
+    (click)="datepicker.close()"
+  >
+    {{ _closeButtonText }}
+  </button>
 </div>

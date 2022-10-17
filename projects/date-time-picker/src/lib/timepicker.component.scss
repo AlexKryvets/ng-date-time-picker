@@ -1,0 +1,49 @@
+$fontSizeIcon: 24px;
+$sizeButtonMeridian: 36px;
+
+.ng-timepicker {
+  font-size: 13px;
+  form {
+    min-width: 90px;
+    .ng-timepicker-table {
+      .ng-timepicker-tbody {
+        tr {
+          td {
+            text-align: center;
+
+            &.ng-timepicker-spacer {
+              font-weight: bold;
+            }
+            &.ng-timepicker-meridian {
+              .mat-button {
+                min-width: 64px;
+                line-height: $sizeButtonMeridian;
+                border-radius: 4px;
+                min-width: 0;
+                border-radius: 50%;
+                width: $sizeButtonMeridian;
+                height: $sizeButtonMeridian;
+                padding: 0;
+                flex-shrink: 0;
+              }
+            }
+
+            .mat-icon-button {
+              height: $fontSizeIcon;
+              width: $fontSizeIcon;
+              line-height: $fontSizeIcon;
+              .mat-icon {
+                font-size: $fontSizeIcon;
+              }
+            }
+            .mat-form-field {
+              width: 20px;
+              max-width: 20px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

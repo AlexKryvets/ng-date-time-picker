@@ -1,7 +1,6 @@
 $calendar-padding: 8px;
 $non-touch-calendar-cell-size: 40px;
-$non-touch-calendar-width:
-    $non-touch-calendar-cell-size * 7 + $calendar-padding * 2;
+$non-touch-calendar-width: $non-touch-calendar-cell-size * 7 + $calendar-padding * 2;
 // Based on the natural height of the calendar in a month with 6 rows of dates
 // (largest the calendar will get).
 $non-touch-calendar-height: 354px;
@@ -20,7 +19,6 @@ $touch-min-width: 250px;
 $touch-min-height: 312px;
 $touch-max-width: 750px;
 $touch-max-height: 788px;
-
 
 .mat-datepicker-content {
   display: block;
@@ -51,6 +49,35 @@ $touch-max-height: 788px;
     .ng-animating & {
       display: none;
     }
+  }
+
+  .time-container {
+    display: flex;
+    position: relative;
+    padding-top: 5px;
+    justify-content: center;
+    &.disable-seconds {
+      .ngx-mat-timepicker {
+        .table {
+          margin-left: 9px;
+        }
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .actions {
+    display: flex;
+    padding: 5px 15px 10px 15px;
+    justify-content: flex-end;
   }
 }
 
