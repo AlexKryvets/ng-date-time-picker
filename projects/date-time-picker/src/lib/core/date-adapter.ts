@@ -1,4 +1,4 @@
-import {DateAdapter} from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
 
 export abstract class NgMatDateAdapter<D> extends DateAdapter<D> {
   /**
@@ -50,11 +50,9 @@ export abstract class NgMatDateAdapter<D> extends DateAdapter<D> {
    */
   isSameTime(a: D, b: D): boolean {
     if (a == null || b == null) return true;
-    return (
-      this.getHour(a) === this.getHour(b) &&
-      this.getMinute(a) === this.getMinute(b) &&
-      this.getSecond(a) === this.getSecond(b)
-    );
+    return this.getHour(a) === this.getHour(b)
+      && this.getMinute(a) === this.getMinute(b)
+      && this.getSecond(a) === this.getSecond(b);
   }
 
   /**
@@ -76,8 +74,7 @@ export abstract class NgMatDateAdapter<D> extends DateAdapter<D> {
    *     a number greater than 0 if the first date is later.
    */
   compareDateWithTime(first: D, second: D, showSeconds?: boolean): number {
-    let res =
-      super.compareDate(first, second) ||
+    let res = super.compareDate(first, second) ||
       this.getHour(first) - this.getHour(second) ||
       this.getMinute(first) - this.getMinute(second);
     if (showSeconds) {
@@ -98,4 +95,5 @@ export abstract class NgMatDateAdapter<D> extends DateAdapter<D> {
     this.setMinute(date, defaultTime[1] || 0);
     this.setSecond(date, defaultTime[2] || 0);
   }
+
 }

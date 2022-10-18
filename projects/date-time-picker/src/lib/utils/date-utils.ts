@@ -5,13 +5,13 @@ export const LIMIT_TIMES = {
   maxMinute: 60,
   minSecond: 0,
   maxSecond: 60,
-  meridian: 12,
-};
+  meridian: 12
+}
 
 export const MERIDIANS = {
   AM: 'AM',
-  PM: 'PM',
-};
+  PM: 'PM'
+}
 
 export const DEFAULT_STEP = 1;
 export const NUMERIC_REGEX = /[^0-9]/g;
@@ -28,12 +28,12 @@ export function formatTwoDigitTimeValue(val: number) {
 export function createMissingDateImplError(provider: string) {
   return Error(
     `NgxMatDatepicker: No provider found for ${provider}. You must import one of the following ` +
-      'modules at your application root: NgxMatNativeDateModule, NgxMatMomentModule, or provide a ' +
-      'custom implementation.',
-  );
+    `modules at your application root: NgxMatNativeDateModule, NgxMatMomentModule, or provide a ` +
+    `custom implementation.`);
 }
 
 /** Formats a range of years. */
 export function formatYearRange(start: string, end: string): string {
   return `${start} \u2013 ${end}`;
 }
+
