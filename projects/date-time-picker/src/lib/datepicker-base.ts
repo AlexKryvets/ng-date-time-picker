@@ -120,7 +120,7 @@ const _MatDatepickerContentBase = mixinColor(
   host: {
     class: 'mat-datepicker-content',
     '[@transformPanel]': '_animationState',
-    '(@transformPanel.done)': '_animationDone.next(undefined)',
+    '(@transformPanel.done)': '_animationDone.next()',
     '[class.mat-datepicker-content-touch]': 'datepicker.touchUi',
   },
   animations: [matDatepickerAnimations.transformPanel, matDatepickerAnimations.fadeInCalendar],
@@ -133,9 +133,7 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   extends _MatDatepickerContentBase
   implements OnInit, AfterViewInit, OnDestroy, CanColor {
   private _subscriptions = new Subscription();
-
   private _model: MatDateSelectionModel<S, D>;
-
   /** Reference to the internal calendar component. */
   @ViewChild(MatCalendar) _calendar: MatCalendar<D>;
 
@@ -147,6 +145,12 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
 
   /** End of the comparison range. */
   comparisonEnd: D | null;
+
+  /** ARIA Accessible name of the `<input matStartDate/>` */
+  startDateAccessibleName: string | null;
+
+  /** ARIA Accessible name of the `<input matEndDate/>` */
+  endDateAccessibleName: string | null;
 
   /** Whether the datepicker is above or below the input. */
   _isAbove: boolean;
@@ -223,7 +227,10 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
         event.event,
       );
       this._model.updateSelection(newSelection as unknown as S, this);
-    } else if (value && (isRange || !this._dateAdapter.sameDate(value, selection as unknown as D))) {
+    } else if (
+      value &&
+      (isRange || !this._dateAdapter.sameDate(value, selection as unknown as D))
+    ) {
       this._model.add(value);
     }
 
@@ -283,7 +290,11 @@ export interface MatDatepickerControl<D> {
 }
 
 /** A datepicker that can be attached to a {@link MatDatepickerControl}. */
-export interface MatDatepickerPanel<C extends MatDatepickerControl<D>, S, D = ExtractDateTypeFromSelection<S>> {
+export interface MatDatepickerPanel<
+  C extends MatDatepickerControl<D>,
+  S,
+  D = ExtractDateTypeFromSelection<S>,
+> {
   /** Stream that emits whenever the date picker is closed. */
   closedStream: EventEmitter<void>;
   /** Color palette to use on the datepicker's calendar. */
@@ -314,9 +325,7 @@ export abstract class MatDatepickerBase<
   D = ExtractDateTypeFromSelection<S>,
 > implements MatDatepickerPanel<C, S, D>, OnDestroy, OnChanges {
   private _scrollStrategy: () => ScrollStrategy;
-
   private _inputStateChanges = Subscription.EMPTY;
-
   private _document = inject(DOCUMENT);
 
   /** An input indicating the type of the custom header component for the calendar, if set. */
@@ -329,11 +338,9 @@ export abstract class MatDatepickerBase<
     // selected value is.
     return this._startAt || (this.datepickerInput ? this.datepickerInput.getStartValue() : null);
   }
-
   set startAt(value: D | null) {
     this._startAt = this._dateAdapter.getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-
   private _startAt: D | null;
 
   /** The view that the calendar should start in. */
@@ -342,13 +349,13 @@ export abstract class MatDatepickerBase<
   /** Color palette to use on the datepicker's calendar. */
   @Input()
   get color(): ThemePalette {
-    return this._color || (this.datepickerInput ? this.datepickerInput.getThemePalette() : undefined);
+    return (
+      this._color || (this.datepickerInput ? this.datepickerInput.getThemePalette() : undefined)
+    );
   }
-
   set color(value: ThemePalette) {
     this._color = value;
   }
-
   _color: ThemePalette;
 
   /**
@@ -359,11 +366,9 @@ export abstract class MatDatepickerBase<
   get touchUi(): boolean {
     return this._touchUi;
   }
-
   set touchUi(value: BooleanInput) {
     this._touchUi = coerceBooleanProperty(value);
   }
-
   private _touchUi = false;
 
   @Input()
@@ -380,9 +385,10 @@ export abstract class MatDatepickerBase<
   /** Whether the datepicker pop-up should be disabled. */
   @Input()
   get disabled(): boolean {
-    return this._disabled === undefined && this.datepickerInput ? this.datepickerInput.disabled : !!this._disabled;
+    return this._disabled === undefined && this.datepickerInput
+      ? this.datepickerInput.disabled
+      : !!this._disabled;
   }
-
   set disabled(value: BooleanInput) {
     const newValue = coerceBooleanProperty(value);
 
@@ -391,7 +397,6 @@ export abstract class MatDatepickerBase<
       this.stateChanges.next(undefined);
     }
   }
-
   private _disabled: boolean;
 
   /** Preferred position of the datepicker in the X axis. */
@@ -411,11 +416,9 @@ export abstract class MatDatepickerBase<
   get restoreFocus(): boolean {
     return this._restoreFocus;
   }
-
   set restoreFocus(value: BooleanInput) {
     this._restoreFocus = coerceBooleanProperty(value);
   }
-
   private _restoreFocus = true;
 
   /**
@@ -433,7 +436,9 @@ export abstract class MatDatepickerBase<
   /**
    * Emits when the current view changes.
    */
-  @Output() readonly viewChanged: EventEmitter<MatCalendarView> = new EventEmitter<MatCalendarView>(true);
+  @Output() readonly viewChanged: EventEmitter<MatCalendarView> = new EventEmitter<MatCalendarView>(
+    true,
+  );
 
   /** Function that can be used to add custom CSS classes to dates. */
   @Input() dateClass: MatCalendarCellClassFunction<D>;
@@ -452,11 +457,9 @@ export abstract class MatDatepickerBase<
   get panelClass(): string | string[] {
     return this._panelClass;
   }
-
   set panelClass(value: string | string[]) {
     this._panelClass = coerceStringArray(value);
   }
-
   private _panelClass: string[];
 
   /** Whether the calendar is open. */
@@ -464,11 +467,9 @@ export abstract class MatDatepickerBase<
   get opened(): boolean {
     return this._opened;
   }
-
   set opened(value: BooleanInput) {
     coerceBooleanProperty(value) ? this.open() : this.close();
   }
-
   private _opened = false;
 
   /** Whether the timepicker'spinners is shown. */
@@ -720,7 +721,10 @@ export abstract class MatDatepickerBase<
     this._destroyOverlay();
 
     const isDialog = this.touchUi;
-    const portal = new ComponentPortal<MatDatepickerContent<S, D>>(MatDatepickerContent, this._viewContainerRef);
+    const portal = new ComponentPortal<MatDatepickerContent<S, D>>(
+      MatDatepickerContent,
+      this._viewContainerRef,
+    );
     const overlayRef = (this._overlayRef = this._overlay.create(
       new OverlayConfig({
         positionStrategy: isDialog ? this._getDialogStrategy() : this._getDropdownStrategy(),
@@ -735,7 +739,7 @@ export abstract class MatDatepickerBase<
       }),
     ));
 
-    this._getCloseStream(overlayRef).subscribe((event) => {
+    this._getCloseStream(overlayRef).subscribe(event => {
       if (event) {
         event.preventDefault();
       }
@@ -746,7 +750,7 @@ export abstract class MatDatepickerBase<
     // it inside a timeout which can give browsers a chance to fire off a keyboard event in-between
     // that can scroll the page (see #24969). Always block default actions of arrow keys for the
     // entire overlay so the page doesn't get scrolled by accident.
-    overlayRef.keydownEvents().subscribe((event) => {
+    overlayRef.keydownEvents().subscribe(event => {
       const keyCode = event.keyCode;
 
       if (
@@ -837,7 +841,7 @@ export abstract class MatDatepickerBase<
       overlayRef.backdropClick(),
       overlayRef.detachments(),
       overlayRef.keydownEvents().pipe(
-        filter((event) => {
+        filter(event => {
           // Closing on alt + up is only valid when there's an input associated with the datepicker.
           return (
             (event.keyCode === ESCAPE && !hasModifierKey(event)) ||

@@ -22,7 +22,7 @@ import {MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER} from '@angular/material/datepi
   encapsulation: ViewEncapsulation.None,
   providers: [
     MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER,
-    {provide: MatDatepickerBase, useExisting: MatDatepickerComponent},
+    {provide: MatDatepickerBase, useExisting: MatDatepicker},
   ],
 })
-export class MatDatepickerComponent<D> extends MatDatepickerBase<MatDatepickerControl<D>, D | null, D> {}
+export class MatDatepicker<D> extends MatDatepickerBase<MatDatepickerControl<D>, D | null, D> {}
