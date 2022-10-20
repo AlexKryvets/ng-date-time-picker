@@ -27,7 +27,16 @@
                         "prefix": "ng",
                         "style": "kebab-case"
                     }
-                ]
+                ],
+                "@typescript-eslint/object-curly-spacing": ["off"],
+                "@typescript-eslint/comma-dangle": ["off"],
+                "@typescript-eslint/semi": ["off"],
+                "@typescript-eslint/quotes": ["off"],
+                "@typescript-eslint/lines-between-class-members": ["off"],
+                "@typescript-eslint/no-extra-semi": ["off"],
+                "@angular-eslint/use-lifecycle-interface": ["off"],
+                "@typescript-eslint/brace-style": ["off"],
+                "@typescript-eslint/dot-notation": ["off"]
             }
         },
         {
