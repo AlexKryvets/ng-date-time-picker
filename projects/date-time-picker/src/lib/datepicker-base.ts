@@ -118,7 +118,7 @@ const _MatDatepickerContentBase = mixinColor(
   templateUrl: 'datepicker-content.html',
   styleUrls: ['datepicker-content.scss'],
   host: {
-    class: 'mat-datepicker-content',
+    'class': 'mat-datepicker-content',
     '[@transformPanel]': '_animationState',
     '(@transformPanel.done)': '_animationDone.next()',
     '[class.mat-datepicker-content-touch]': 'datepicker.touchUi',
@@ -131,7 +131,8 @@ const _MatDatepickerContentBase = mixinColor(
 })
 export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
   extends _MatDatepickerContentBase
-  implements OnInit, AfterViewInit, OnDestroy, CanColor {
+  implements OnInit, AfterViewInit, OnDestroy, CanColor
+{
   private _subscriptions = new Subscription();
   private _model: MatDateSelectionModel<S, D>;
   /** Reference to the internal calendar component. */
@@ -145,12 +146,6 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
 
   /** End of the comparison range. */
   comparisonEnd: D | null;
-
-  /** ARIA Accessible name of the `<input matStartDate/>` */
-  startDateAccessibleName: string | null;
-
-  /** ARIA Accessible name of the `<input matEndDate/>` */
-  endDateAccessibleName: string | null;
 
   /** Whether the datepicker is above or below the input. */
   _isAbove: boolean;
@@ -323,7 +318,8 @@ export abstract class MatDatepickerBase<
   C extends MatDatepickerControl<D>,
   S,
   D = ExtractDateTypeFromSelection<S>,
-> implements MatDatepickerPanel<C, S, D>, OnDestroy, OnChanges {
+> implements MatDatepickerPanel<C, S, D>, OnDestroy, OnChanges
+{
   private _scrollStrategy: () => ScrollStrategy;
   private _inputStateChanges = Subscription.EMPTY;
   private _document = inject(DOCUMENT);

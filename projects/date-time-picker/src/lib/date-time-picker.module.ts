@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {PortalModule} from '@angular/cdk/portal';
 import {MatButtonModule} from '@angular/material/button';
-import {MatDatepickerComponent} from './datepicker';
+import {MatDatepicker} from './datepicker';
 import {MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER, MatDatepickerContent} from './datepicker-base';
 import {NgTimepickerComponent} from './timepicker.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -12,7 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
-  declarations: [MatDatepickerComponent, MatDatepickerContent, NgTimepickerComponent],
+  declarations: [MatDatepicker, MatDatepickerContent, NgTimepickerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,7 +24,7 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatDatepickerModule,
   ],
-  exports: [MatDatepickerComponent, MatDatepickerContent, NgTimepickerComponent],
+  exports: [MatDatepicker, MatDatepickerContent, NgTimepickerComponent],
   providers: [MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER],
 })
 export class NgDateTimePickerModule {}

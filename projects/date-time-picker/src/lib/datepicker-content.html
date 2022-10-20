@@ -5,8 +5,7 @@
   [attr.aria-labelledby]="_dialogLabelId ?? undefined"
   class="mat-datepicker-content-container"
   [class.mat-datepicker-content-container-with-custom-header]="datepicker.calendarHeaderComponent"
-  [class.mat-datepicker-content-container-with-actions]="_actionsPortal"
->
+  [class.mat-datepicker-content-container-with-actions]="_actionsPortal">
   <mat-calendar
     [id]="datepicker.id"
     [ngClass]="datepicker.panelClass"
@@ -21,13 +20,10 @@
     [comparisonStart]="comparisonStart"
     [comparisonEnd]="comparisonEnd"
     [@fadeInCalendar]="'enter'"
-    [startDateAccessibleName]="startDateAccessibleName"
-    [endDateAccessibleName]="endDateAccessibleName"
     (yearSelected)="datepicker._selectYear($event)"
     (monthSelected)="datepicker._selectMonth($event)"
     (viewChanged)="datepicker._viewChanged($event)"
-    (_userSelection)="_handleUserSelection($event)"
-  ></mat-calendar>
+    (_userSelection)="_handleUserSelection($event)"></mat-calendar>
 
   <ng-container *ngIf="isViewMonth">
     <div *ngIf="!datepicker._hideTime" class="time-container" [class.disable-seconds]="!datepicker._showSeconds">
@@ -47,7 +43,5 @@
     (focus)="_closeButtonFocused = true"
     (blur)="_closeButtonFocused = false"
     (click)="datepicker.close()"
-  >
-    {{ _closeButtonText }}
-  </button>
+  >{{ _closeButtonText }}</button>
 </div>
