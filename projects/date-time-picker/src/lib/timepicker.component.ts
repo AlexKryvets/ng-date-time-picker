@@ -11,7 +11,7 @@ import { createMissingDateImplError, DEFAULT_STEP, formatTwoDigitTimeValue, LIMI
   templateUrl: './timepicker.component.html',
   styleUrls: ['./timepicker.component.scss'],
   host: {
-    class: 'ng-timepicker',
+    'class': 'ng-timepicker'
   },
   providers: [
     {
@@ -71,7 +71,7 @@ export class NgTimepickerComponent<D> implements ControlValueAccessor, OnInit, O
   public pattern = PATTERN_INPUT_HOUR;
 
   constructor(@Optional() public _dateAdapter: NgMatDateAdapter<D>,
-              private cd: ChangeDetectorRef, private formBuilder: FormBuilder) {
+    private cd: ChangeDetectorRef, private formBuilder: FormBuilder) {
     if (!this._dateAdapter) {
       throw createMissingDateImplError('NgxMatDateAdapter');
     }
