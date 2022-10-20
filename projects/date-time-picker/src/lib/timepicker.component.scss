@@ -3,10 +3,8 @@ $sizeButtonMeridian: 36px;
 
 .ng-timepicker {
   font-size: 13px;
-
   form {
     min-width: 90px;
-
     .ng-timepicker-table {
       .ng-timepicker-tbody {
         tr {
@@ -16,7 +14,6 @@ $sizeButtonMeridian: 36px;
             &.ng-timepicker-spacer {
               font-weight: bold;
             }
-
             &.ng-timepicker-meridian {
               .mat-button {
                 min-width: 64px;
@@ -35,12 +32,10 @@ $sizeButtonMeridian: 36px;
               height: $fontSizeIcon;
               width: $fontSizeIcon;
               line-height: $fontSizeIcon;
-
               .mat-icon {
                 font-size: $fontSizeIcon;
               }
             }
-
             .mat-form-field {
               width: 20px;
               max-width: 20px;
