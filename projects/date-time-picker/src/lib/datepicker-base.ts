@@ -68,36 +68,15 @@ import {
   MAT_DATE_RANGE_SELECTION_STRATEGY,
   MatDateRangeSelectionStrategy,
   MatDatepickerIntl,
+  DatepickerDropdownPositionX,
+  DatepickerDropdownPositionY,
+  MAT_DATEPICKER_SCROLL_STRATEGY,
 } from '@angular/material/datepicker';
 import {createMissingDateImplError} from './datepicker-errors';
 import {DOCUMENT} from '@angular/common';
-import {MAT_DATEPICKER_SCROLL_STRATEGY as MAT_DATEPICKER_SCROLL_STRATEGY_ORIG} from '@angular/material/datepicker';
 
 /** Used to generate a unique ID for each datepicker instance. */
 let datepickerUid = 0;
-
-/** Injection token that determines the scroll handling while the calendar is open. */
-export const MAT_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>(
-  'mat-datepicker-scroll-strategy',
-);
-
-/** @docs-private */
-export function MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {
-  return () => overlay.scrollStrategies.reposition();
-}
-
-/** Possible positions for the datepicker dropdown along the X axis. */
-export type DatepickerDropdownPositionX = 'start' | 'end';
-
-/** Possible positions for the datepicker dropdown along the Y axis. */
-export type DatepickerDropdownPositionY = 'above' | 'below';
-
-/** @docs-private */
-export const MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER = {
-  provide: MAT_DATEPICKER_SCROLL_STRATEGY,
-  deps: [Overlay],
-  useFactory: MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY,
-};
 
 // Boilerplate for applying mixins to MatDatepickerContent.
 /** @docs-private */
@@ -494,7 +473,7 @@ export abstract class MatDatepickerBase<
   public _showSeconds = false;
 
   /** The id for the datepicker calendar. */
-  id: string = `ng-datepicker-${datepickerUid++}`;
+  id: string = `ng-mat-datepicker-${datepickerUid++}`;
 
   /** The minimum selectable date. */
   _getMinDate(): D | null {
@@ -535,7 +514,7 @@ export abstract class MatDatepickerBase<
     private _overlay: Overlay,
     private _ngZone: NgZone,
     private _viewContainerRef: ViewContainerRef,
-    @Inject(MAT_DATEPICKER_SCROLL_STRATEGY_ORIG) scrollStrategy: any,
+    @Inject(MAT_DATEPICKER_SCROLL_STRATEGY) scrollStrategy: any,
     @Optional() private _dateAdapter: DateAdapter<D>,
     @Optional() private _dir: Directionality,
     private _model: MatDateSelectionModel<S, D>,
