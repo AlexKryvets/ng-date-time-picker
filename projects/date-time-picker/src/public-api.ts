@@ -5,6 +5,7 @@ export * from './lib/date-time-picker.module';
 
 export { MatDatepickerContent as NgMatDatepickerContent } from './lib/datepicker-base';
 export * from './lib/datepicker';
+export * from './lib/datetime-input';
 
 export * from './lib/timepicker.component';
 export * from './lib/core/date-adapter';

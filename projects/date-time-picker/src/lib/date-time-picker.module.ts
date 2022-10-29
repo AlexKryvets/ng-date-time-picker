@@ -11,9 +11,10 @@ import {MatInputModule} from '@angular/material/input';
 import {NgMatDatepicker} from './datepicker';
 import {MatDatepickerContent as NgMatDatepickerContent} from './datepicker-base';
 import {NgTimepickerComponent} from './timepicker.component';
+import {NgMatDatepickerInput} from './datetime-input';
 
 @NgModule({
-  declarations: [NgMatDatepicker, NgMatDatepickerContent, NgTimepickerComponent],
+  declarations: [NgMatDatepicker, NgMatDatepickerContent, NgTimepickerComponent, NgMatDatepickerInput],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +26,7 @@ import {NgTimepickerComponent} from './timepicker.component';
     MatFormFieldModule,
     MatDatepickerModule,
   ],
-  exports: [NgMatDatepicker, NgMatDatepickerContent, NgTimepickerComponent],
+  exports: [NgMatDatepicker, NgMatDatepickerContent, NgTimepickerComponent, NgMatDatepickerInput],
   providers: [MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER],
 })
 export class NgDateTimePickerModule {}
