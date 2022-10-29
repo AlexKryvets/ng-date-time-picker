@@ -1,3 +1,5 @@
+import {NgMatDateAdapter} from './core/date-adapter';
+
 declare const ngDevMode: object | null;
 /**
  * @license
@@ -157,7 +159,7 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     elementRef: ElementRef,
     private _changeDetectorRef: ChangeDetectorRef,
     private _globalModel: MatDateSelectionModel<S, D>,
-    private _dateAdapter: DateAdapter<D>,
+    private _dateAdapter: NgMatDateAdapter<D>,
     @Optional()
     @Inject(MAT_DATE_RANGE_SELECTION_STRATEGY)
     private _rangeSelectionStrategy: MatDateRangeSelectionStrategy<D>,
@@ -189,6 +191,8 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     const selection = this._model.selection;
     const value = event.value;
     const isRange = selection instanceof DateRange;
+
+    this._dateAdapter.copyTime(value, selection as unknown as D);
 
     // If we're selecting a range and we have a selection strategy, always pass the value through
     // there. Otherwise don't assign null values to the model, unless we're selecting a range.
@@ -222,6 +226,10 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
 
   _getSelected() {
     return this._model.selection as unknown as D | DateRange<D> | null;
+  }
+
+  _setSelected(date: D) {
+    this._model.add(date);
   }
 
   /** Applies the current pending selection to the global model. */
@@ -515,7 +523,7 @@ export abstract class MatDatepickerBase<
     private _ngZone: NgZone,
     private _viewContainerRef: ViewContainerRef,
     @Inject(MAT_DATEPICKER_SCROLL_STRATEGY) scrollStrategy: any,
-    @Optional() private _dateAdapter: DateAdapter<D>,
+    @Optional() private _dateAdapter: NgMatDateAdapter<D>,
     @Optional() private _dir: Directionality,
     private _model: MatDateSelectionModel<S, D>,
   ) {
