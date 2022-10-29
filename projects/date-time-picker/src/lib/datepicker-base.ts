@@ -71,6 +71,7 @@ import {
 } from '@angular/material/datepicker';
 import {createMissingDateImplError} from './datepicker-errors';
 import {DOCUMENT} from '@angular/common';
+import {MAT_DATEPICKER_SCROLL_STRATEGY as MAT_DATEPICKER_SCROLL_STRATEGY_ORIG} from '@angular/material/datepicker';
 
 /** Used to generate a unique ID for each datepicker instance. */
 let datepickerUid = 0;
@@ -534,7 +535,7 @@ export abstract class MatDatepickerBase<
     private _overlay: Overlay,
     private _ngZone: NgZone,
     private _viewContainerRef: ViewContainerRef,
-    @Inject(MAT_DATEPICKER_SCROLL_STRATEGY) scrollStrategy: any,
+    @Inject(MAT_DATEPICKER_SCROLL_STRATEGY_ORIG) scrollStrategy: any,
     @Optional() private _dateAdapter: DateAdapter<D>,
     @Optional() private _dir: Directionality,
     private _model: MatDateSelectionModel<S, D>,
