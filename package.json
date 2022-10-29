@@ -7,6 +7,7 @@
         "build": "ng build",
         "build:date-time-picker": "ng build date-time-picker",
         "watch": "ng build --watch --configuration development",
+        "watch:date-time-picker": "ng build date-time-picker --watch --configuration development",
         "test": "ng test",
         "lint": "ng lint",
         "lint:date-time-picker": "ng lint date-time-picker",
