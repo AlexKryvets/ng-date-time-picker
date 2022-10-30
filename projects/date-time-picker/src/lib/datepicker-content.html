@@ -27,7 +27,9 @@
 
   <ng-container *ngIf="isViewMonth">
     <div *ngIf="!datepicker._hideTime" class="time-container" [class.disable-seconds]="!datepicker._showSeconds">
-      <ng-timepicker [showSpinners]="datepicker._showSpinners" [ngModel]="_getSelected()"
+      <ng-timepicker [showSpinners]="datepicker._showSpinners"
+                     [showSeconds]="datepicker._showSeconds"
+                     [ngModel]="_getSelected()"
                      (ngModelChange)="_setSelected($event)"></ng-timepicker>
     </div>
   </ng-container>

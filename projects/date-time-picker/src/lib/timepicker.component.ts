@@ -192,7 +192,7 @@ export class NgTimepickerComponent<D> implements ControlValueAccessor, OnInit, O
 
     this._dateAdapter.setHour(this._model, _hour);
     this._dateAdapter.setMinute(this._model, this.minute);
-    this._dateAdapter.setSecond(this._model, this.second);
+    this._dateAdapter.setSecond(this._model, this.showSeconds ? this.second : 0);
     this._onChange(this._model);
   }
 
