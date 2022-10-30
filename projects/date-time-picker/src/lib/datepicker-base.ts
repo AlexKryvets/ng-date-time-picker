@@ -192,7 +192,9 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     const value = event.value;
     const isRange = selection instanceof DateRange;
 
-    this._dateAdapter.copyTime(value, selection as unknown as D);
+    if (selection) {
+      this._dateAdapter.copyTime(value, selection as unknown as D);
+    }
 
     // If we're selecting a range and we have a selection strategy, always pass the value through
     // there. Otherwise don't assign null values to the model, unless we're selecting a range.
