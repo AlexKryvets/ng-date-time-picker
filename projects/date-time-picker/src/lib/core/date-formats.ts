@@ -7,19 +7,6 @@
  */
 
 import { InjectionToken } from '@angular/core';
+import {MatDateFormats} from '@angular/material/core';
 
-
-export type NgMatDateFormats = {
-  parse: {
-    dateInput: any
-  },
-  display: {
-    dateInput: any,
-    monthYearLabel: any,
-    dateA11yLabel: any,
-    monthYearA11yLabel: any,
-  }
-};
-
-
-export const NG_MAT_DATE_FORMATS = new InjectionToken<NgMatDateFormats>('ng-mat-date-formats');
+export const NG_MAT_DATE_FORMATS = new InjectionToken<MatDateFormats>('ng-mat-date-formats');

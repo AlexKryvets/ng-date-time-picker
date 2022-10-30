@@ -9,7 +9,8 @@ import {MAT_FORM_FIELD, MatFormField} from '@angular/material/form-field';
 
 import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
 import {NgMatDateAdapter} from './core/date-adapter';
-import {NG_MAT_DATE_FORMATS, NgMatDateFormats} from './core/date-formats';
+import {MatDateFormats} from '@angular/material/core';
+import {NG_MAT_DATE_FORMATS} from './core/date-formats';
 
 @Directive({
   selector: 'input[ngMatDatepicker]',
@@ -45,7 +46,7 @@ export class NgMatDatepickerInput<D> extends MatDatepickerInput<D>
   constructor(
     elementRef: ElementRef<HTMLInputElement>,
     @Optional() dateAdapter: NgMatDateAdapter<D>,
-    @Optional() @Inject(NG_MAT_DATE_FORMATS) dateFormats: NgMatDateFormats,
+    @Optional() @Inject(NG_MAT_DATE_FORMATS) dateFormats: MatDateFormats,
     @Optional() @Inject(MAT_FORM_FIELD) _formField?: MatFormField,
   ) {
     super(elementRef, dateAdapter, dateFormats, _formField);
