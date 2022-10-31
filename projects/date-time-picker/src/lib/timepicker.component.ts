@@ -106,7 +106,7 @@ export class NgMatTimepickerComponent<D> implements ControlValueAccessor, OnInit
    */
   writeValue(val: D): void {
     if (val != null) {
-      this._model = val;
+      this._model = this._dateAdapter.clone(val);
     } else {
       this._model = this._dateAdapter.today();
       if (this.defaultTime != null) {
