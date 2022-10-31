@@ -7,23 +7,23 @@ import { NgMatDateAdapter } from './core/date-adapter';
 import { createMissingDateImplError, DEFAULT_STEP, formatTwoDigitTimeValue, LIMIT_TIMES, MERIDIANS, NUMERIC_REGEX, PATTERN_INPUT_HOUR, PATTERN_INPUT_MINUTE, PATTERN_INPUT_SECOND } from './utils/date-utils';
 
 @Component({
-  selector: 'ng-timepicker',
+  selector: 'ng-mat-timepicker',
   templateUrl: './timepicker.component.html',
   styleUrls: ['./timepicker.component.scss'],
   host: {
-    'class': 'ng-timepicker'
+    'class': 'ng-mat-timepicker'
   },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NgTimepickerComponent),
+      useExisting: forwardRef(() => NgMatTimepickerComponent),
       multi: true
     }
   ],
-  exportAs: 'ngTimepicker',
+  exportAs: 'ngMatTimepicker',
   encapsulation: ViewEncapsulation.None,
 })
-export class NgTimepickerComponent<D> implements ControlValueAccessor, OnInit, OnChanges {
+export class NgMatTimepickerComponent<D> implements ControlValueAccessor, OnInit, OnChanges {
 
   public form: FormGroup;
 

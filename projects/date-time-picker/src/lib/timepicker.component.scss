@@ -1,22 +1,22 @@
 $fontSizeIcon: 24px;
 $sizeButtonMeridian: 36px;
 
-.ng-timepicker {
+.ng-mat-timepicker {
   font-size: 13px;
   form {
     min-width: 90px;
-    .ng-timepicker-table {
-      .ng-timepicker-tbody {
+    .ng-mat-timepicker-table {
+      .ng-mat-timepicker-tbody {
         tr {
           td {
             text-align: center;
             font-size: 22px;
 
-            &.ng-timepicker-spacer {
+            &.ng-mat-timepicker-spacer {
               font-weight: bold;
               padding-bottom: 12px;
             }
-            &.ng-timepicker-meridian {
+            &.ng-mat-timepicker-meridian {
               .mat-button {
                 min-width: 64px;
                 line-height: $sizeButtonMeridian;
