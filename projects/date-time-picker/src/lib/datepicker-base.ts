@@ -76,6 +76,7 @@ import {
 } from '@angular/material/datepicker';
 import {createMissingDateImplError} from './datepicker-errors';
 import {DOCUMENT} from '@angular/common';
+import {DEFAULT_STEP} from './utils/date-utils';
 
 /** Used to generate a unique ID for each datepicker instance. */
 let datepickerUid = 0;
@@ -383,7 +384,7 @@ export abstract class MatDatepickerBase<
       this.stateChanges.next(undefined);
     }
   }
-  private _disabled: boolean;
+  public _disabled: boolean;
 
   /** Preferred position of the datepicker in the X axis. */
   @Input()
@@ -481,6 +482,36 @@ export abstract class MatDatepickerBase<
   }
 
   public _showSeconds = false;
+
+  /** Step hour */
+  @Input()
+  get stepHour(): number { return this._stepHour; }
+  set stepHour(value: number) { this._stepHour = value; }
+  public _stepHour: number = DEFAULT_STEP;
+
+  /** Step minute */
+  @Input()
+  get stepMinute(): number { return this._stepMinute; }
+  set stepMinute(value: number) { this._stepMinute = value; }
+  public _stepMinute: number = DEFAULT_STEP;
+
+  /** Step second */
+  @Input()
+  get stepSecond(): number { return this._stepSecond; }
+  set stepSecond(value: number) { this._stepSecond = value; }
+  public _stepSecond: number = DEFAULT_STEP;
+
+  /** Enable meridian */
+  @Input()
+  get enableMeridian(): boolean { return this._enableMeridian; }
+  set enableMeridian(value: boolean) { this._enableMeridian = value; }
+  public _enableMeridian: boolean = false;
+
+  /** disable minute */
+  @Input()
+  get disableMinute(): boolean { return this._disableMinute; }
+  set disableMinute(value: boolean) { this._disableMinute = value; }
+  public _disableMinute: boolean;
 
   /** The id for the datepicker calendar. */
   id: string = `ng-mat-datepicker-${datepickerUid++}`;
