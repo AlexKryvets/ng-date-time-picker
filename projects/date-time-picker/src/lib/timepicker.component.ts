@@ -109,6 +109,8 @@ export class NgMatTimepickerComponent<D> implements ControlValueAccessor, OnInit
       this._model = this._dateAdapter.clone(val);
     } else {
       this._model = this._dateAdapter.today();
+      const nextMinute = this.getNextValue(this._dateAdapter.getMinute(this._model), this.stepMinute, 60);
+      this._dateAdapter.setMinute(this._model, nextMinute);
       if (this.defaultTime != null) {
         this._dateAdapter.setTimeByDefaultValues(this._model, this.defaultTime);
       }
@@ -217,7 +219,15 @@ export class NgMatTimepickerComponent<D> implements ControlValueAccessor, OnInit
         if (next === 0) next = max;
       }
     } else {
-      next = up ? this[prop] + this[`step${keyProp}`] : this[prop] - this[`step${keyProp}`];
+      const _next = this.getNextValue(this[prop], this[`step${keyProp}`], max);
+      if (this[prop] === _next) {
+        next = up ? this[prop] + this[`step${keyProp}`] : this[prop] - this[`step${keyProp}`];
+      } else if ((up === true && this[prop] < _next) || (up === false && this[prop] > _next)) {
+        next = _next;
+      } else {
+        next = up ? _next + this[`step${keyProp}`] : _next - this[`step${keyProp}`];
+      }
+
       if (prop === 'hour' && this.enableMeridian) {
         next = next % (max + 1);
         if (next === 0) next = up ? 1 : max;
@@ -253,4 +263,15 @@ export class NgMatTimepickerComponent<D> implements ControlValueAccessor, OnInit
     }
   }
 
+  private getNextValue (value: number, step: number, max: number): number {
+    if (step) {
+      const rest = value % step;
+      if (rest < step / 2) {
+        value -= rest
+      } else {
+        value += step - rest;
+      }
+    }
+    return value < max ? value : 0;
+  }
 }
