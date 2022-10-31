@@ -7,4 +7,5 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'date-time-picker-app';
+  date = new Date('2022-10-10 10:00');
 }

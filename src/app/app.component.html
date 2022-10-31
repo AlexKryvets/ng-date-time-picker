@@ -1,12 +1,19 @@
 <mat-form-field appearance="fill">
   <!--  <mat-label>Choose a date</mat-label>-->
-  <input matInput [ngMatDatepicker]="picker" />
+  <input matInput [ngMatDatepicker]="picker" [value]="date" />
   <!--  <mat-hint>MM/DD/YYYY</mat-hint>-->
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <ng-mat-datepicker #picker>
+  <ng-mat-datepicker #picker
+                     [showSpinners]="false"
+                     [hideTime]="false"
+                     [stepMinute]="10"
+                     [color]="'primary'"
+                     [enableMeridian]="true"
+                     [showSeconds]="false">
     <mat-datepicker-actions>
       <button mat-button matDatepickerCancel>Cancel</button>
       <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
     </mat-datepicker-actions>
   </ng-mat-datepicker>
 </mat-form-field>
+
