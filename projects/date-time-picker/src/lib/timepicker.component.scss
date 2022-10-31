@@ -10,9 +10,11 @@ $sizeButtonMeridian: 36px;
         tr {
           td {
             text-align: center;
+            font-size: 22px;
 
             &.ng-timepicker-spacer {
               font-weight: bold;
+              padding-bottom: 12px;
             }
             &.ng-timepicker-meridian {
               .mat-button {
@@ -37,8 +39,8 @@ $sizeButtonMeridian: 36px;
               }
             }
             .mat-form-field {
-              width: 20px;
-              max-width: 20px;
+              width: 40px;
+              max-width: 40px;
               text-align: center;
             }
           }
