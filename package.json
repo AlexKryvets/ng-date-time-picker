@@ -11,7 +11,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "lint:date-time-picker": "ng lint date-time-picker",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "publish": "npm publish ./dist/date-time-picker"
     },
     "private": true,
     "dependencies": {
