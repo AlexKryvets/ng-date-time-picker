@@ -1,9 +1,5 @@
-import {Directive, ElementRef, Inject, Input, Optional} from '@angular/core';
-import {
-  MAT_DATEPICKER_VALIDATORS,
-  MAT_DATEPICKER_VALUE_ACCESSOR,
-  MatDatepickerInput
-} from '@angular/material/datepicker';
+import {Directive, ElementRef, forwardRef, Inject, Input, Optional} from '@angular/core';
+import {MatDatepickerInput} from '@angular/material/datepicker';
 import {MAT_INPUT_VALUE_ACCESSOR} from '@angular/material/input';
 import {MAT_FORM_FIELD, MatFormField} from '@angular/material/form-field';
 
@@ -11,12 +7,25 @@ import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
 import {NgMatDateAdapter} from './core/date-adapter';
 import {MatDateFormats} from '@angular/material/core';
 import {NG_MAT_DATE_FORMATS} from './core/date-formats';
+import {NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
+
+export const NG_MAT_DATEPICKER_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => NgMatDatepickerInput),
+  multi: true,
+};
+
+export const NG_MAT_DATEPICKER_VALIDATORS: any = {
+  provide: NG_VALIDATORS,
+  useExisting: forwardRef(() => NgMatDatepickerInput),
+  multi: true,
+};
 
 @Directive({
   selector: 'input[ngMatDatepicker]',
   providers: [
-    MAT_DATEPICKER_VALUE_ACCESSOR,
-    MAT_DATEPICKER_VALIDATORS,
+    NG_MAT_DATEPICKER_VALUE_ACCESSOR,
+    NG_MAT_DATEPICKER_VALIDATORS,
     {provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: NgMatDatepickerInput},
   ],
   host: {

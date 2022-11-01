@@ -8,12 +8,14 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgDateTimePickerModule, NgMatNativeDateModule} from 'ng-date-time-picker';
 import {MatButtonModule} from '@angular/material/button';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatButtonModule,
     MatInputModule,
     MatNativeDateModule,
