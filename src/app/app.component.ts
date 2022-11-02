@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'date-time-picker-app';
   date = new Date('2022-10-10 10:00');
+
+  touchUI = false;
 }

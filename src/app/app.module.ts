@@ -9,6 +9,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgDateTimePickerModule, NgMatNativeDateModule} from 'ng-date-time-picker';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import {FormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
