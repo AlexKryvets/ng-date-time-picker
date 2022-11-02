@@ -5,22 +5,23 @@
   <!--  <mat-hint>MM/DD/YYYY</mat-hint>-->
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <ng-mat-datepicker #picker
-                     [showSpinners]="false"
-                     [hideTime]="false"
-                     [stepMinute]="10"
+                     [showSpinners]="showSpinners"
+                     [hideTime]="hideTime"
+                     [stepMinute]="stepMinute"
                      [color]="'primary'"
-                     [enableMeridian]="true"
+                     [enableMeridian]="enableMeridian"
                      [touchUi]="touchUI"
-                     [showSeconds]="false">
-    <mat-datepicker-actions>
-      <button mat-button matDatepickerCancel>Cancel</button>
-      <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-    </mat-datepicker-actions>
+                     [showSeconds]="showSeconds">
   </ng-mat-datepicker>
 </mat-form-field>
 
 <section>
+  <mat-checkbox [color]="'primary'" [(ngModel)]="showSpinners">showSpinners</mat-checkbox>
+  <mat-checkbox [color]="'primary'" [(ngModel)]="hideTime">hideTime</mat-checkbox>
+  <mat-checkbox [color]="'primary'" [(ngModel)]="enableMeridian">enableMeridian</mat-checkbox>
+  <mat-checkbox [color]="'primary'" [(ngModel)]="showSeconds">showSeconds</mat-checkbox>
   <mat-checkbox [color]="'primary'" [(ngModel)]="touchUI">touchUI</mat-checkbox>
+  <input type="number" [(ngModel)]="stepMinute"/>
 </section>
 
 

@@ -8,5 +8,15 @@ import {Component} from '@angular/core';
 export class AppComponent {
   date = new Date('2022-10-10 10:00');
 
+  showSpinners = false;
+
+  hideTime = false;
+
+  enableMeridian = false;
+
+  showSeconds = false;
+
   touchUI = false;
+
+  stepMinute = 10;
 }
