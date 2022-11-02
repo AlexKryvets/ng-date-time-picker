@@ -28,25 +28,28 @@
     <tr>
       <td>
         <mat-form-field appearance="legacy">
-          <input type="text" matInput (input)="formatInput($any($event).target)" maxlength="2" formControlName="hour"
+          <input type="number" matInput (input)="formatInput($any($event).target)" maxlength="2" formControlName="hour"
                  (keydown.ArrowUp)="change('hour', true); $event.preventDefault()"
-                 (keydown.ArrowDown)="change('hour', false); $event.preventDefault()" (blur)="change('hour')">
+                 (keydown.ArrowDown)="change('hour', false); $event.preventDefault()" (blur)="change('hour')"
+                 (focus)="$any($event.target).select()">
         </mat-form-field>
       </td>
       <td class="ng-mat-timepicker-spacer">&#58;</td>
       <td>
         <mat-form-field appearance="legacy">
-          <input type="text" matInput (input)="formatInput($any($event).target)" maxlength="2"
+          <input type="number" matInput (input)="formatInput($any($event).target)" maxlength="2"
                  formControlName="minute" (keydown.ArrowUp)="change('minute', true); $event.preventDefault()"
-                 (keydown.ArrowDown)="change('minute', false); $event.preventDefault()" (blur)="change('minute')">
+                 (keydown.ArrowDown)="change('minute', false); $event.preventDefault()" (blur)="change('minute')"
+                 (focus)="$any($event.target).select()">
         </mat-form-field>
       </td>
       <td *ngIf="showSeconds" class="ng-mat-timepicker-spacer">&#58;</td>
       <td *ngIf="showSeconds">
         <mat-form-field appearance="legacy">
-          <input type="text" matInput (input)="formatInput($any($event).target)" maxlength="2"
+          <input type="number" matInput (input)="formatInput($any($event).target)" maxlength="2"
                  formControlName="second" (keydown.ArrowUp)="change('second', true); $event.preventDefault()"
-                 (keydown.ArrowDown)="change('second', false); $event.preventDefault()" (blur)="change('second')">
+                 (keydown.ArrowDown)="change('second', false); $event.preventDefault()" (blur)="change('second')"
+                 (focus)="$any($event.target).select()">
         </mat-form-field>
       </td>
 

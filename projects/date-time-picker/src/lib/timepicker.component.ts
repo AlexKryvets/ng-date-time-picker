@@ -212,20 +212,19 @@ export class NgMatTimepickerComponent<D> implements ControlValueAccessor, OnInit
       max = LIMIT_TIMES.meridian;
     }
 
-    let next;
+    let next = this.getNextValue(this[prop], this[`step${keyProp}`], max);
     if (up == null) {
-      next = this[prop] % (max);
+      next = next % (max);
       if (prop === 'hour' && this.enableMeridian) {
         if (next === 0) next = max;
       }
     } else {
-      const _next = this.getNextValue(this[prop], this[`step${keyProp}`], max);
-      if (this[prop] === _next) {
+      if (this[prop] === next) {
         next = up ? this[prop] + this[`step${keyProp}`] : this[prop] - this[`step${keyProp}`];
-      } else if ((up === true && this[prop] < _next) || (up === false && this[prop] > _next)) {
-        next = _next;
+      } else if ((up === true && this[prop] < next) || (up === false && this[prop] > next)) {
+        next = next;
       } else {
-        next = up ? _next + this[`step${keyProp}`] : _next - this[`step${keyProp}`];
+        next = up ? next + this[`step${keyProp}`] : next - this[`step${keyProp}`];
       }
 
       if (prop === 'hour' && this.enableMeridian) {
