@@ -193,7 +193,7 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     const value = event.value;
     const isRange = selection instanceof DateRange;
 
-    if (selection) {
+    if (selection && !this.datepicker._hideTime) {
       this._dateAdapter.copyTime(value, selection as unknown as D);
     }
 
@@ -211,7 +211,7 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
       this._model.updateSelection(newSelection as unknown as S, this);
     } else if (
       value &&
-      (isRange || !this._dateAdapter.sameDate(value, selection as unknown as D))
+      (isRange || !this._dateAdapter.sameDateWithTime(value, selection as unknown as D, this.datepicker._showSeconds))
     ) {
       this._model.add(value);
     }

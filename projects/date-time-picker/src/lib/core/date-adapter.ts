@@ -96,4 +96,16 @@ export abstract class NgMatDateAdapter<D> extends DateAdapter<D> {
     this.setSecond(date, defaultTime[2] || 0);
   }
 
+  sameDateWithTime(first: D | null, second: D | null, showSeconds?: boolean): boolean {
+    if (first && second) {
+      let firstValid = this.isValid(first);
+      let secondValid = this.isValid(second);
+      if (firstValid && secondValid) {
+        return !this.compareDateWithTime(first, second, showSeconds);
+      }
+      return firstValid == secondValid;
+    }
+    return first == second;
+  }
+
 }
