@@ -42,7 +42,8 @@ $touch-max-height: 788px;
   // higher specificity, or it can be overridden based on the CSS insertion order (see #21043).
   .mat-datepicker-close-button {
     position: absolute;
-    top: 100%;
+    //top: 100%;
+    bottom: 35px;
     left: 0;
     margin-top: 8px;
 
@@ -99,7 +100,7 @@ $touch-max-height: 788px;
   position: relative;
 
   // Prevents the content from jumping around on Windows while the animation is running.
-  overflow: visible;
+  overflow: auto;
 
   .mat-datepicker-content-container {
     min-height: $touch-min-height;
@@ -114,22 +115,22 @@ $touch-max-height: 788px;
   }
 }
 
-@media all and (orientation: landscape) {
-  .mat-datepicker-content-touch .mat-datepicker-content-container {
-    width: $touch-landscape-width;
-    height: $touch-landscape-height;
-  }
-}
-
-@media all and (orientation: portrait) {
-  .mat-datepicker-content-touch .mat-datepicker-content-container {
-    width: $touch-portrait-width;
-    height: $touch-portrait-height;
-  }
-
-  // The content needs to be a bit taller when actions have
-  // been projected so that it doesn't have to scroll.
-  .mat-datepicker-content-touch .mat-datepicker-content-container-with-actions {
-    height: $touch-portrait-height-with-actions;
-  }
-}
+//@media all and (orientation: landscape) {
+//  .mat-datepicker-content-touch .mat-datepicker-content-container {
+//    width: $touch-landscape-width;
+//    height: $touch-landscape-height;
+//  }
+//}
+//
+//@media all and (orientation: portrait) {
+//  .mat-datepicker-content-touch .mat-datepicker-content-container {
+//    width: $touch-portrait-width;
+//    height: $touch-portrait-height;
+//  }
+//
+//  // The content needs to be a bit taller when actions have
+//  // been projected so that it doesn't have to scroll.
+//  .mat-datepicker-content-touch .mat-datepicker-content-container-with-actions {
+//    height: $touch-portrait-height-with-actions;
+//  }
+//}
