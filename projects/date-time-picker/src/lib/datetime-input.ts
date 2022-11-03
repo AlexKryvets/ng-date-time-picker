@@ -56,8 +56,8 @@ export class NgMatDatepickerInput<D> extends MatDatepickerInput<D>
     elementRef: ElementRef<HTMLInputElement>,
     @Optional() dateAdapter: NgMatDateAdapter<D>,
     @Optional() @Inject(NG_MAT_DATE_FORMATS) dateFormats: MatDateFormats,
-    @Optional() @Inject(MAT_FORM_FIELD) _formField?: MatFormField,
+    @Optional() @Inject(MAT_FORM_FIELD) private formField?: MatFormField,
   ) {
-    super(elementRef, dateAdapter, dateFormats, _formField);
+    super(elementRef, dateAdapter, dateFormats, formField);
   }
 }

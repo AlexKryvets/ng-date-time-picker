@@ -51,7 +51,6 @@ import {
   OnChanges,
   SimpleChanges,
   OnInit,
-  inject,
 } from '@angular/core';
 import {CanColor, DateAdapter, mixinColor, ThemePalette} from '@angular/material/core';
 import {merge, Subject, Observable, Subscription} from 'rxjs';
@@ -313,7 +312,6 @@ export abstract class MatDatepickerBase<
 {
   private _scrollStrategy: () => ScrollStrategy;
   private _inputStateChanges = Subscription.EMPTY;
-  private _document = inject(DOCUMENT);
 
   /** An input indicating the type of the custom header component for the calendar, if set. */
   @Input() calendarHeaderComponent: ComponentType<any>;
@@ -558,6 +556,7 @@ export abstract class MatDatepickerBase<
     @Inject(MAT_DATEPICKER_SCROLL_STRATEGY) scrollStrategy: any,
     @Optional() private _dateAdapter: NgMatDateAdapter<D>,
     @Optional() private _dir: Directionality,
+    @Optional() @Inject(DOCUMENT) private _document: any,
     private _model: MatDateSelectionModel<S, D>,
   ) {
     if (!this._dateAdapter && (typeof ngDevMode === 'undefined' || ngDevMode)) {
