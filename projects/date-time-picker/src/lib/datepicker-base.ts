@@ -10,7 +10,7 @@ declare const ngDevMode: object | null;
  */
 
 import {Directionality} from '@angular/cdk/bidi';
-import {BooleanInput, coerceBooleanProperty, coerceStringArray} from '@angular/cdk/coercion';
+import {coerceBooleanProperty, coerceStringArray} from '@angular/cdk/coercion';
 import {
   DOWN_ARROW,
   ESCAPE,
@@ -353,7 +353,7 @@ export abstract class MatDatepickerBase<
   get touchUi(): boolean {
     return this._touchUi;
   }
-  set touchUi(value: BooleanInput) {
+  set touchUi(value: boolean) {
     this._touchUi = coerceBooleanProperty(value);
   }
   private _touchUi = false;
@@ -376,7 +376,7 @@ export abstract class MatDatepickerBase<
       ? this.datepickerInput.disabled
       : !!this._disabled;
   }
-  set disabled(value: BooleanInput) {
+  set disabled(value: boolean) {
     const newValue = coerceBooleanProperty(value);
 
     if (newValue !== this._disabled) {
@@ -403,7 +403,7 @@ export abstract class MatDatepickerBase<
   get restoreFocus(): boolean {
     return this._restoreFocus;
   }
-  set restoreFocus(value: BooleanInput) {
+  set restoreFocus(value: boolean) {
     this._restoreFocus = coerceBooleanProperty(value);
   }
   private _restoreFocus = true;
@@ -454,7 +454,7 @@ export abstract class MatDatepickerBase<
   get opened(): boolean {
     return this._opened;
   }
-  set opened(value: BooleanInput) {
+  set opened(value: boolean) {
     coerceBooleanProperty(value) ? this.open() : this.close();
   }
   private _opened = false;
