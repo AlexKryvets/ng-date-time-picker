@@ -55,7 +55,7 @@ import {
 import {CanColor, mixinColor, ThemePalette} from '@angular/material/core';
 import {merge, Subject, Observable, Subscription} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
-import {_getFocusedElementPierceShadowDom} from '@angular/cdk/platform';
+import {_getFocusedElementPierceShadowDom} from './cdk-platform';
 import {
   MatCalendar,
   MatCalendarView,

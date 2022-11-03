@@ -60,4 +60,12 @@ export class NgMatDatepickerInput<D> extends MatDatepickerInput<D>
   ) {
     super(elementRef, dateAdapter, dateFormats, formField);
   }
+
+  getOverlayLabelId(): string | null {
+    if (this.formField) {
+      return this.formField.getLabelId();
+    }
+
+    return this._elementRef.nativeElement.getAttribute('aria-labelledby');
+  }
 }
