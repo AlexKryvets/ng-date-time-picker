@@ -724,6 +724,10 @@ export abstract class MatDatepickerBase<
     this._componentRef?.instance?._applyPendingSelection();
   }
 
+  getContentSelected() {
+    return this._componentRef?.instance?._getSelected();
+  }
+
   /** Forwards relevant values from the datepicker to the datepicker content inside the overlay. */
   protected _forwardContentValues(instance: MatDatepickerContent<S, D>) {
     instance.datepicker = this;
