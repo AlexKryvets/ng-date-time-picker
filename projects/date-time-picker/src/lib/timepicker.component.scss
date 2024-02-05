@@ -14,7 +14,7 @@ $sizeButtonMeridian: 36px;
 
             &.ng-mat-timepicker-spacer {
               font-weight: bold;
-              padding-bottom: 12px;
+              padding-bottom: 22px;
             }
             &.ng-mat-timepicker-meridian {
               .mat-button {
@@ -38,10 +38,18 @@ $sizeButtonMeridian: 36px;
                 font-size: $fontSizeIcon;
               }
             }
-            .mat-form-field {
+            mat-form-field {
+              font-size: inherit;
               width: 40px;
               max-width: 40px;
               text-align: center;
+              .mdc-text-field {
+                padding: 0 7px;
+                background-color: transparent;
+                .mat-mdc-form-field-focus-overlay {
+                  opacity: 0;
+                }
+              }
             }
           }
         }

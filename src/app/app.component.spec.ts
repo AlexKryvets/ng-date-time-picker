@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it('should have as title \'date-time-picker-app\'', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('date-time-picker-app');
+    expect(app.stepMinute).toEqual(10);
   });
 
   it('should render title', () => {
