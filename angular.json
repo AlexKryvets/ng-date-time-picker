@@ -70,10 +70,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "date-time-picker-app:build:production"
+                            "buildTarget": "date-time-picker-app:build:production"
                         },
                         "development": {
-                            "browserTarget": "date-time-picker-app:build:development"
+                            "buildTarget": "date-time-picker-app:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "date-time-picker-app:build"
+                        "buildTarget": "date-time-picker-app:build"
                     }
                 },
                 "test": {
