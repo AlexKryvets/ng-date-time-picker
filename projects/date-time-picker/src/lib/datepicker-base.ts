@@ -192,7 +192,7 @@ export class MatDatepickerContent<S, D = ExtractDateTypeFromSelection<S>>
     const value = event.value;
     const isRange = selection instanceof DateRange;
 
-    // if (selection && !this.datepicker._hideTime) {
+    // if (selection && !this.datepicker.hideTime) {
     this._dateAdapter.copyTime(value, selection as unknown as D);
     // }
 
@@ -272,6 +272,7 @@ export interface MatDatepickerControl<D> {
   getConnectedOverlayOrigin(): ElementRef;
   getOverlayLabelId(): string | null;
   stateChanges: Observable<void>;
+  get hideTime(): boolean;
 }
 
 /** A datepicker that can be attached to a {@link MatDatepickerControl}. */
@@ -358,14 +359,14 @@ export abstract class MatDatepickerBase<
 
   @Input()
   get hideTime(): boolean {
-    return this._hideTime;
+    return this._hideTime !== undefined ? this._hideTime : (this.datepickerInput ? this.datepickerInput.hideTime : false);
   }
 
   set hideTime(value: boolean) {
     this._hideTime = coerceBooleanProperty(value);
   }
 
-  public _hideTime = false;
+  public _hideTime: boolean;
 
   /** Whether the datepicker pop-up should be disabled. */
   @Input()

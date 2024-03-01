@@ -27,7 +27,7 @@
     (_userSelection)="_handleUserSelection($event)"></mat-calendar>
 
   <ng-container *ngIf="isViewMonth">
-    <div *ngIf="!datepicker._hideTime" class="time-container" [class.disable-seconds]="!datepicker._showSeconds">
+    <div *ngIf="!datepicker.hideTime" class="time-container" [class.disable-seconds]="!datepicker._showSeconds">
       <ng-mat-timepicker [showSpinners]="datepicker._showSpinners"
                          [showSeconds]="datepicker._showSeconds"
                          [disabled]="datepicker._disabled"
