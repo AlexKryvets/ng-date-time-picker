@@ -10,3 +10,5 @@ import { InjectionToken } from '@angular/core';
 import {MatDateFormats} from '@angular/material/core';
 
 export const NG_MAT_DATE_FORMATS = new InjectionToken<MatDateFormats>('ng-mat-date-formats');
+
+export const NG_MAT_DATETIME_FORMATS = new InjectionToken<MatDateFormats>('ng-mat-datetime-formats');

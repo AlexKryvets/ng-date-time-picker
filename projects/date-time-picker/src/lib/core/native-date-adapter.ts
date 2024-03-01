@@ -301,6 +301,10 @@ export class NgMatNativeDateAdapter extends NgMatDateAdapter<Date> {
     date.setSeconds(value);
   }
 
+  toUtcDate(date: Date): Date {
+    return new Date(Date.UTC(this.getYear(date), this.getMonth(date), this.getDate(date), this.getHour(date), this.getMinute(date), this.getSecond(date)));
+  }
+
   /** Creates a date but allows the month and date to overflow. */
   private _createDateWithOverflow(year: number, month: number, date: number) {
     const result = new Date(year, month, date);

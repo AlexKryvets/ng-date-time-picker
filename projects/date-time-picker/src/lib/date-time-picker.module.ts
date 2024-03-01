@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER, MatDatepickerModule} from '@angular/material/datepicker';
+import {MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER, MatCalendar} from '@angular/material/datepicker';
 import {PortalModule} from '@angular/cdk/portal';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -24,7 +24,7 @@ import {NgMatDatepickerInput} from './datetime-input';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDatepickerModule,
+    MatCalendar,
   ],
   exports: [NgMatDatepicker, NgMatDatepickerContent, NgMatTimepickerComponent, NgMatDatepickerInput],
   providers: [MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER],

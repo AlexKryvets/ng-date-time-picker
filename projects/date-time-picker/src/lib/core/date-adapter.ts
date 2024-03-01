@@ -43,6 +43,8 @@ export abstract class NgMatDateAdapter<D> extends DateAdapter<D> {
    */
   abstract setSecond(date: D, value: number): void;
 
+  abstract toUtcDate(date: D): D;
+
   /**
    * Check if two date have same time
    * @param a Date 1

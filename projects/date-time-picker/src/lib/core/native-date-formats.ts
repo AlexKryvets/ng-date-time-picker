@@ -10,7 +10,10 @@ import { MatDateFormats } from '@angular/material/core';
 
 const DEFAULT_DATE_INPUT = {
   year: 'numeric', month: 'numeric', day: 'numeric',
-  hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit"
+}
+
+const DEFAULT_TIME_INPUT = {
+  hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit",
 }
 
 export const NG_MAT_NATIVE_DATE_FORMATS: MatDateFormats = {
@@ -19,6 +22,18 @@ export const NG_MAT_NATIVE_DATE_FORMATS: MatDateFormats = {
   },
   display: {
     dateInput: DEFAULT_DATE_INPUT,
+    monthYearLabel: { year: 'numeric', month: 'short' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
+  }
+};
+
+export const NG_MAT_NATIVE_DATETIME_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: {...DEFAULT_DATE_INPUT, ...DEFAULT_TIME_INPUT},
+  },
+  display: {
+    dateInput: {...DEFAULT_DATE_INPUT, ...DEFAULT_TIME_INPUT},
     monthYearLabel: { year: 'numeric', month: 'short' },
     dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
     monthYearA11yLabel: { year: 'numeric', month: 'long' },
